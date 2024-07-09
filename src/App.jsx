@@ -101,11 +101,30 @@ const App = () => {
               <p>Price: ${fighter.price}</p>
               <p>Strength: {fighter.strength}</p>
               <p>Agility: {fighter.agility}</p>
-              <button onClick={() => addFighter(fighter)}>Add Fighter</button>
+              <button onClick={() => handleAddFighter(fighter)}>
+                Add Fighter
+              </button>
             </div>
           </li>
         ))}
       </ul>
+      <h2>My Zombie Fighters</h2>
+      {team.length === 0 ? (
+        <p>Pick Fighthers for Your Team!</p>
+      ) : (
+        <ul className="myTeam">
+          {team.map((fighter, index) => (
+            <li key={index} className="myFighter">
+              <img src={fighter.img} alt={fighter.name} />
+              <div className="myFighterDetails">
+                <h3>{fighter.name}</h3>
+                <p>Strenght: {fighter.strength}</p>
+                <p>Agility: {fighter.agility}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
     </>
   );
 };

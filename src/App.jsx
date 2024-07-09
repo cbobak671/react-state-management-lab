@@ -88,6 +88,13 @@ const App = () => {
     }
   };
 
+  const handleRemoveFighter = (index) => {
+    const removedFighter = team[index];
+    const newTeam = team.filter((_, index) => index !== index);
+    setTeam(newTeam);
+    setMoney(money + removedFighter.price);
+  };
+
   const calculateTeamStrength = () => {
     let teamStrength = 0;
     team.forEach((fighter) => {
@@ -141,6 +148,7 @@ const App = () => {
                 <p>Strength: {fighter.strength}</p>
                 <p>Agility: {fighter.agility}</p>
                 <p>Price: ${fighter.price}</p>
+                <button onClick={handleRemoveFighter}>Remove Fighter</button>
               </div>
             </li>
           ))}

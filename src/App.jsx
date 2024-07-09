@@ -77,16 +77,27 @@ const App = () => {
     },
   ]);
 
+  const handleAddFighter = (fighter) => {
+    if (money >= fighter.price) {
+      setTeam([...team, fighter]);
+      setMoney(money - fighter.price);
+    } else {
+      console.log("Not enough money");
+    }
+  };
+
   return (
     <>
       <h1>Zombie Fighters!</h1>
       <p>Money: ${money}</p>
+      <br />
+      <h2>Fighters</h2>
       <ul className="figthers">
         {zombieFighters.map((fighter, index) => (
           <li key={index} className="fighterItem">
             <img src={fighter.img} alt={fighter.name} />
             <div className="fighterDetails">
-              <h2>{fighter.name}</h2>
+              <h3>{fighter.name}</h3>
               <p>Price: ${fighter.price}</p>
               <p>Strength: {fighter.strength}</p>
               <p>Agility: {fighter.agility}</p>

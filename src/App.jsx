@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 
 const App = () => {
@@ -19,7 +19,7 @@ const App = () => {
       price: 10,
       strength: 5,
       agility: 5,
-      img: "https://via.placeholder.com/150/771796",
+      img: "https://via.placeholder.com/150/92c952",
     },
     {
       name: "Shadow",
@@ -96,18 +96,16 @@ const App = () => {
   };
 
   const calculateTeamStrength = () => {
-    let teamStrength = 0;
-    team.forEach((fighter) => {
-      teamStrength + fighter.strength;
-    });
+    const teamStrength = team.reduce(
+      (accumulator, fighter) => accumulator + fighter.strength
+    );
     setTotalStrength(teamStrength);
   };
 
   const calculateTeamAgility = () => {
-    let teamAgility = 0;
-    team.forEach((fighter) => {
-      teamAgility + fighter.agility;
-    });
+    const teamAgility = team.reduce(
+      (accumulator, fighter) => accumulator + fighter.agility
+    );
     setTeamAgility(teamAgility);
   };
 

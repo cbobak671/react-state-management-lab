@@ -4,6 +4,8 @@ import "./App.css";
 const App = () => {
   const [team, setTeam] = useState([]);
   const [money, setMoney] = useState(100);
+  const [totalStrength, setTotalStrength] = useState(0);
+  const [teamAgility, setTeamAgility] = useState(0);
   const [zombieFighters, setZombieFighters] = useState([
     {
       name: "Survivor",
@@ -86,6 +88,22 @@ const App = () => {
     }
   };
 
+  const calculateTeamStrength = () => {
+    let teamStrength = 0;
+    team.forEach((fighter) => {
+      teamStrength + fighter.strength;
+    });
+    setTotalStrength(teamStrength);
+  };
+
+  const calculateTeamAgility = () => {
+    let teamAgility = 0;
+    team.forEach((fighter) => {
+      teamAgility + fighter.agility;
+    });
+    setTeamAgility(teamAgility);
+  };
+
   return (
     <>
       <h1>Zombie Fighters!</h1>
@@ -109,6 +127,8 @@ const App = () => {
         ))}
       </ul>
       <h2>My Zombie Fighters</h2>
+      <p>Team Strength: {totalStrength}</p>
+      <p>Team Agility: {teamAgility}</p>
       {team.length === 0 ? (
         <p>Pick Fighthers for Your Team!</p>
       ) : (
@@ -118,8 +138,9 @@ const App = () => {
               <img src={fighter.img} alt={fighter.name} />
               <div className="myFighterDetails">
                 <h3>{fighter.name}</h3>
-                <p>Strenght: {fighter.strength}</p>
+                <p>Strength: {fighter.strength}</p>
                 <p>Agility: {fighter.agility}</p>
+                <p>Price: ${fighter.price}</p>
               </div>
             </li>
           ))}
